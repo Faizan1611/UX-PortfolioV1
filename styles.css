@@ -347,3 +347,69 @@ section{position:relative}
   .reveal{opacity:1;transform:none}
   html{scroll-behavior:auto}
 }
+
+
+/* ---------- UX / Branding toggle ---------- */
+[hidden]{display:none!important}
+.seg-wrap{display:flex;justify-content:center;margin-bottom:34px}
+.seg{display:inline-flex;gap:4px;padding:5px;border:1px solid var(--line);border-radius:999px;background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.seg-btn{padding:11px 30px;border-radius:999px;font-family:var(--display);font-weight:600;font-size:16px;letter-spacing:-.01em;color:var(--navlink);transition:background .25s,color .25s,box-shadow .3s}
+.seg-btn:hover{color:var(--text);background:var(--soft2)}
+.seg-btn.on{background:var(--lime);color:var(--ink);box-shadow:0 0 0 1px var(--limeb),0 8px 26px rgba(150,200,0,.28)}
+.seg-btn:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.pane-in{animation:paneIn .55s cubic-bezier(.2,.8,.2,1)}
+@keyframes paneIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* branding wordmark tiles */
+.logo-tile.blue{background:#1d4ed8}
+.logo-tile.violet{background:#4a1f8f}
+.logo-tile.red{background:#d9262c}
+.logo-tile.ink{background:#0a1628}
+.wm{font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.02em;white-space:nowrap;line-height:1}
+.wm-ts{color:#fff}
+.wm-jam{color:#d9262c;font-size:17px;letter-spacing:-.03em}
+.wm-jam i{font-style:normal;color:#111;margin:0 3px;font-weight:400}
+.wm-df{color:#fff}
+.wm-an{color:#fff;letter-spacing:.02em}
+.wm-pc{color:#fff;font-size:17px}
+.wm-pc small{font-family:var(--mono);font-weight:400;font-size:9px;color:#f97316;letter-spacing:.08em;text-transform:uppercase;margin-left:2px}
+
+/* tiles cover (grid of social / ad designs) */
+.tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:560px;margin:0 auto}
+.tile{border-radius:16px;overflow:hidden;background:#fff;border:1px solid rgba(255,255,255,.14);box-shadow:0 30px 70px rgba(0,0,0,.4);transition:transform .25s ease-out}
+.tile img{width:100%;height:auto;aspect-ratio:var(--ar,1/1);object-fit:cover}
+.tiles .tile:nth-child(odd){transform:translateY(10px)}
+.tiles.big{max-width:760px}
+.cs-cover.tiles-bg{padding:54px 40px;background:radial-gradient(circle at 50% 0,#3a1f6b,#14081f)}
+
+/* case study galleries (branding) */
+.cs-gh{font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:-.02em;margin:46px 0 16px}
+.cs-gh:first-child{margin-top:4px}
+.cs-gallery.one{grid-template-columns:1fr}
+.cs-gallery.two{grid-template-columns:repeat(2,1fr);align-items:start}
+.cs-gallery.m3{display:block;columns:3 220px;column-gap:18px}
+.cs-gallery.m3 figure{break-inside:avoid;margin-bottom:18px}
+.cs-gallery.one figure,.cs-gallery.two figure{background:var(--card)}
+.cs-gallery figure img{height:auto}
+
+@media (max-width:560px){
+  .seg-btn{padding:10px 24px;font-size:15px}
+  .cs-gallery.two{grid-template-columns:1fr}
+  .cs-gallery.m3{columns:2 140px}
+  .cs-gh{font-size:19px}
+  .cs-cover.tiles-bg{padding:30px 16px}
+}
+
+/* facts grid adapts to 3 items; logo grid can't be stretched by nowrap wordmarks */
+@media (min-width:1001px){.cs-facts.f3{grid-template-columns:repeat(3,1fr)}.cs-facts.f2{grid-template-columns:repeat(2,1fr)}}
+.logo-grid{grid-template-columns:repeat(6,minmax(0,1fr))}
+.logo-grid>*{min-width:0}
+@media (max-width:1000px){.logo-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:560px){
+  .logo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .wm{font-size:16px}.wm-jam{font-size:15px}.wm-pc small{display:none}
+  .logo-tile{padding:14px 12px}
+}
+
+/* captions sit below the image in the branding galleries so they never cover the design */
+.cs-gallery.one figcaption,.cs-gallery.two figcaption,.cs-gallery.m3 figcaption{position:static;display:block;padding:11px 16px 13px;border-radius:0;background:none;backdrop-filter:none;color:var(--muted);border-top:1px solid var(--line);font-size:13px}
